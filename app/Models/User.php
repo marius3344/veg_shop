@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Order;
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -47,6 +48,11 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->HasMany(Order::class);
+        return $this->hasMany(Order::class);
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class);
     }
 }
